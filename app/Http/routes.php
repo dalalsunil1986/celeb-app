@@ -31,12 +31,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => '/api/v1/admin', 'middleware' 
         'password' => 'PasswordController'
     ]);
 
-    // Controller to Manage Deleting of Photos
-    Route::resource('photo', 'PhotoController');
-
     // Controller to Add celebrity
-    Route::resource('celebrity', 'CelebrityController');
+    Route::resource('celebrity', 'CelebrityController', ['only' => ['store']]);
 
-    Route::get('/', ['as' => 'home', 'uses' => 'UserController@index']);
+    Route::get('/', ['as' => 'home', 'uses' => 'CelebrityController@index']);
 
 });

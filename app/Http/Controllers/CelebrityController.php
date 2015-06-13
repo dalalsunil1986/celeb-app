@@ -35,10 +35,6 @@ class CelebrityController extends Controller
     public function index()
     {
         // Get a Random Celeb from DB
-
-//        $celebrity = $this->celebrityRepository->model->all();
-//
-//        return response()->json($celebrity);
         $celebrityA = $this->celebrityRepository->model->with('thumbnail')->has('thumbnail')->orderBy(DB::raw('RAND()'))->first();
 
         // Get another Random Celeb from DB
