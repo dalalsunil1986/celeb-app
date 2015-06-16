@@ -19,17 +19,21 @@ Route::group(['prefix' => '/api/v1'], function () {
     // Case a Vote to the celebrity
     Route::post('vote', ['as' => 'post.vote', 'uses' => 'VoteController@store']);
 
-    // returns 2 choice of celebrity to vote
-    Route::get('/', ['as' => 'home', 'uses' => 'CelebrityController@index']);
-
-});
-
-Route::group(['namespace' => 'Admin', 'prefix' => '/api/v1/admin', 'middleware' => ['auth']], function () {
-
     Route::controllers([
         'auth'     => 'AuthController',
         'password' => 'PasswordController'
     ]);
+
+    Route::post('register', 'AuthController@create');
+
+    // returns 2 choice of celebrity to vote
+    Route::get('/', ['as' => 'home', 'uses' => 'CelebrityController@index']);
+
+
+
+});
+
+Route::group(['namespace' => 'Admin', 'prefix' => '/api/v1/admin', 'middleware' => ['auth']], function () {
 
     // Controller to Add celebrity
     Route::resource('celebrity', 'CelebrityController', ['only' => ['store']]);
