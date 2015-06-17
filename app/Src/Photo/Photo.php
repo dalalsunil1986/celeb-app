@@ -30,4 +30,9 @@ class Photo extends BaseModel
         return array_get($this->types, $type, $type);
     }
 
+    public function getNameAttribute($name)
+    {
+        return url('/').'/uploads/medium/'.$name;
+    }
+
 }

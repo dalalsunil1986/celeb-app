@@ -9,7 +9,7 @@ class ImageService extends BaseImageService
 
     public function store(UploadedFile $image)
     {
-        return $this->process($image, ['thumbnail']);
+        return $this->process($image, ['thumbnail','large','medium']);
     }
 
 } 

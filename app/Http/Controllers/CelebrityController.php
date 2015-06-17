@@ -45,6 +45,7 @@ class CelebrityController extends Controller
 
         $data = response()->json([(compact('celebrityA', 'celebrityB'))]);
 
+
         return $data;
 
 // Example Response
