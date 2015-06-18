@@ -37,7 +37,7 @@ $factory->define(App\Src\Photo\Photo::class, function ($faker) {
     return [
         'imageable_id'   => App\Src\Celebrity\Celebrity::orderByRaw("RAND()")->first()->id,
         'imageable_type' => 'Celebrity',
-        'name'           => $faker->word.'.jpg',
+        'name'           => '7.jpg',
         'thumbnail'      => '1'
     ];
 });
