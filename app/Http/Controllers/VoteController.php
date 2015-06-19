@@ -36,10 +36,11 @@ class VoteController extends Controller
      */
     public function store(Request $request)
     {
+
         // Validate The Post Values
         $this->validate($request, [
-            'celebrityA' => 'required|integer',
-            'celebrityB' => 'required|integer',
+            'celebrityA' => 'required|integer|exists:celebrities,id',
+            'celebrityB' => 'required|integer|exists:celebrities,id',
             'vote'       => 'required|integer|exists:celebrities,id',
         ]);
 
@@ -56,5 +57,6 @@ class VoteController extends Controller
 
         return $data;
     }
+
 
 }

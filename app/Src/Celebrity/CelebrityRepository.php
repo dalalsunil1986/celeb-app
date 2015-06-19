@@ -17,9 +17,5 @@ class CelebrityRepository extends BaseRepository
         $this->model = $model;
     }
 
-    public function getRankings($paginate = 10)
-    {
-
-    }
 
 }

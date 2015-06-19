@@ -43,7 +43,8 @@ class CelebrityController extends Controller
 
         // Preprare JSON Response
 
-        $data = response()->json([(compact('celebrityA', 'celebrityB'))]);
+
+        $data = response()->json([$celebrityA,$celebrityB]);
 
 
         return $data;
@@ -95,6 +96,8 @@ class CelebrityController extends Controller
     public function getRankings()
     {
         $rankings = $this->celebrityRepository->model->getRankings();
+
+        $rankings->load('thumbnail');
 
         return $rankings;
     }
