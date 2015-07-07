@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Src\Album\AlbumRepository;
 use App\Src\Track\TrackRepository;
+use Illuminate\Support\Facades\Auth;
 use Vinkla\Instagram\InstagramManager;
 
 class HomeController extends Controller
