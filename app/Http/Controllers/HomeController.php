@@ -11,7 +11,12 @@ class HomeController extends Controller
 
     public function dashboard()
     {
+        if (Auth::check()) {
+            return '<a href="/admin">Admin Panel</a>';
+        }
+
         return '<h1> Welcome </h1>';
+
     }
 
 }
