@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Src\User\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\User;
 use Validator;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
@@ -21,6 +20,7 @@ class AuthController extends Controller
     |
     */
 
+    use AuthenticatesAndRegistersUsers;
 
     /**
      * Create a new authentication controller instance.
@@ -29,106 +29,36 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
-     * Handle a login request to the application.
+     * Get a validator for an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param  array $data
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function postLogin(Request $request)
+    protected function validator(array $data)
     {
-        if (Auth::check()) {
-            return response()->json(['message' => 'you are already logged in']);
-        }
-
-        $validator = Validator::make($request->all(), [
-            'email'    => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['status' => 'failed', 'message' => $validator->errors()->all()]);
-        }
-
-        $credentials = $this->getCredentials($request);
-
-        if (Auth::attempt($credentials, $request->has('remember'))) {
-
-            return response()->json(['message' => 'logged in']);
-        }
-
-        return response()->json(['status' => 'fail', 'message' => $this->getFailedLoginMessage()]);
-
-    }
-
-    /**
-     * Get the needed authorization credentials from the request.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return array
-     */
-    protected function getCredentials(Request $request)
-    {
-        return $request->only('email', 'password');
-    }
-
-    /**
-     * Get the failed login message.
-     *
-     * @return string
-     */
-    protected function getFailedLoginMessage()
-    {
-        return 'These credentials do not match our records.';
-    }
-
-    /**
-     * Log the user out of the application.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getLogout()
-    {
-        Auth::logout();
-
-        return response()->json(['message' => 'logged out']);
-    }
-
-    /**
-     * Get the path to the login route.
-     *
-     * @return string
-     */
-    public function loginPath()
-    {
-        return property_exists($this, 'loginPath') ? $this->loginPath : '/auth/login';
-    }
-
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function postRegister(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
+        return Validator::make($data, [
             'name'     => 'required|max:255',
             'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
+    }
 
-        if ($validator->fails()) {
-            return response()->json(['status' => 'failed', 'message' => $validator->errors()->all()]);
-        }
-
-        $user = User::create($request->all());
-
-        Auth::login($user);
-
-        return response()->json(['status' => 'success', 'message' => 'registered', 'data' => $user]);
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array $data
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name'     => $data['name'],
+            'email'    => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
     }
 }

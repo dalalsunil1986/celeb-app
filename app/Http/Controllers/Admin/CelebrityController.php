@@ -38,13 +38,25 @@ class CelebrityController extends Controller
         $this->photoRepository = $photoRepository;
     }
 
+    public function index()
+    {
+        $celebrities = $this->celebrityRepository->model->with('thumbnail')->paginate(100);
+
+        return view('admin.celebrity.index', compact('celebrities'));
+    }
+
+    public function  create()
+    {
+        return view('admin.celebrity.create');
+    }
+
     /**
      * Add a Celeb to DB
      * @param Request $request
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name'      => 'required|unique:celebrities,name',
             'thumbnail' => 'required | image'
         ]);
@@ -58,6 +70,44 @@ class CelebrityController extends Controller
             $this->photoRepository->attach($request->file('thumbnail'), $celebrity, ['thumbnail' => 1]);
 
         }
+
+        return redirect('/admin/celebrity/create')->with('success', 'Celebrity Added');
+    }
+
+    public function edit($id)
+    {
+        $celebrity = $this->celebrityRepository->model->find($id);
+
+        return view('admin.celebrity.edit', compact('celebrity'));
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        $celebrity = $this->celebrityRepository->model->find($id);
+        $this->validate($request, [
+            'name'      => 'required|unique:celebrities,name,'.$id,
+            'thumbnail' => 'image'
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->file('thumbnail');
+            $this->photoRepository->replace($file, $celebrity, ['thumbnail' => 1], $id);
+        }
+        return redirect('/admin/celebrity/')->with('success', 'Celebrity Updated');
+    }
+
+    public function delete($id)
+    {
+        $celebrity = $this->celebrityRepository->model->find($id);
+        $celebrity->delete();
+
+        return redirect('/admin/celebrity/')->with('success', 'Celebrity Deleted');
+    }
+
+    public function destroy($id)
+    {
+
 
     }
 

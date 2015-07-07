@@ -11,6 +11,15 @@
 |
 */
 
+Route::controllers([
+    'auth'     => 'AuthController',
+    'password' => 'PasswordController'
+]);
+
+Route::get('/', 'HomeController@dashboard');
+
+Route::get('/home', ['as'=>'home','uses'=>'HomeController@dashboard']);
+
 Route::group(['prefix' => '/api/v1'], function () {
 
 
@@ -25,10 +34,6 @@ Route::group(['prefix' => '/api/v1'], function () {
     // Case a Vote to the celebrity
     Route::post('vote', ['as' => 'post.vote', 'uses' => 'VoteController@store']);
 
-    Route::controllers([
-        'auth'     => 'AuthController',
-        'password' => 'PasswordController'
-    ]);
 
     Route::post('register', 'AuthController@create');
 
@@ -39,11 +44,12 @@ Route::group(['prefix' => '/api/v1'], function () {
 
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => '/api/v1/admin', 'middleware' => ['auth']], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['admin']], function () {
 
     // Controller to Add celebrity
-    Route::resource('celebrity', 'CelebrityController', ['only' => ['store']]);
+    Route::resource('celebrity', 'CelebrityController');
+    Route::get('celebrity/{id}/delete', 'CelebrityController@delete');
 
-    Route::get('/', ['as' => 'home', 'uses' => 'CelebrityController@index']);
+    Route::get('/', ['uses' => 'CelebrityController@index']);
 
 });

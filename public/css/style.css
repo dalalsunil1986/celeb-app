@@ -1,0 +1,462 @@
+.navbar-form input, .form-inline input {
+    width: auto;
+}
+
+/* end */
+
+/* custom theme + Bootstrap resets */
+
+header {
+    min-height: 180px;
+    margin-bottom: 5px;
+}
+
+/* only apply sticky columns on wider screens */
+@media (min-width: 1200px) {
+    #sidebar {
+        margin-left: 15px;
+    }
+
+    #content {
+        padding-right: 15px;
+    }
+
+    #sidebar.affix-top {
+        position: static;
+    }
+
+    #sidebar.affix {
+        position: fixed !important;
+        top: 20px;
+        width: 200px;
+    }
+
+    #midCol.affix-top {
+        position: static;
+    }
+
+    #midCol.affix-bottom {
+        padding-top: 0;
+    }
+
+    #midCol.affix {
+        position: fixed !important;
+        top: 20px;
+        width: 292px;
+    }
+}
+
+.affix {
+    position: static;
+}
+
+body {
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-weight: 300;
+    color: #13141d;
+    background-color: #ffffff;
+}
+
+a {
+    color: #004444;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #77CCDD;
+    text-decoration: none;
+}
+
+.highlight-bk {
+    background-color: #77CCDD;
+    padding: 1px;
+    width: 100%;
+}
+
+.highlight {
+    color: #77CCDD;
+}
+
+h3.highlight {
+    padding-top: 13px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #77CCDD;
+}
+
+.navbar {
+    background-color: #77CCDD;
+    color: #ffffff;
+    border-radius: 0;
+}
+
+.navbar-nav > li > a {
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 1px solid #66BBCC;
+}
+
+.navbar-nav > li:last-child > a {
+    border-left: 1px solid #66BBCC;
+}
+
+.navbar-nav li a:hover {
+    background-color: #66BBCC;
+    color: #004444;
+}
+
+.navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
+    color: #000;
+    opacity: .9;
+}
+
+.navbar-brand {
+    color: #fff;
+}
+
+.navbar-brand:hover {
+    color: #004444;
+}
+
+.accordion-group {
+    border-width: 0;
+}
+
+.dropdown-menu {
+    min-width: 250px;
+}
+
+.caret {
+    color: #fff;
+}
+
+.navbar-toggle {
+    color: #fff;
+    border-width: 0;
+}
+
+.navbar-toggle:hover {
+    background-color: #fff;
+}
+
+.panel, .panel-heading {
+    border-radius: 0;
+    border-width: 0;
+    -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.09);
+}
+
+.thumbnail {
+    margin-bottom: 8px;
+    border-radius: 0;
+}
+
+.well {
+    border-radius: 0;
+}
+
+.accordion-heading .accordion-toggle, .accordion-inner, .nav-stacked li > a {
+    padding-left: 1px;
+}
+
+footer {
+    background-color: #dfdfdf;
+    color: #888;
+    margin-top: 20px;
+    padding: 20px 0;
+    font-style: italic;
+    text-align: center;
+}
+
+@media (min-width: 992px) {
+    .no-gutter.row > div[class*='col-md'] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .no-gutter.row > .col-md-12 {
+        width: 99.99999999999999%;
+        *width: 99.93055555555554%;
+    }
+
+    .no-gutter.row .col-md-11 {
+        width: 91.66666666666666%;
+        *width: 91.59722222222221%;
+    }
+
+    .no-gutter.row > .col-md-10 {
+        width: 83.33333333333331%;
+        *width: 83.26388888888887%;
+    }
+
+    .no-gutter.row > .col-md-9 {
+        width: 74.99999999999999%;
+        *width: 74.93055555555554%;
+    }
+
+    .no-gutter.row > .col-md-8 {
+        width: 66.66666666666666%;
+        *width: 66.59722222222221%;
+    }
+
+    .no-gutter.row > .col-md-7 {
+        width: 58.33333333333333%;
+        *width: 58.263888888888886%;
+    }
+
+    .no-gutter.row > .col-md-6 {
+        width: 49.99999999999999%;
+    }
+
+    .no-gutter.row > .col-md-4 {
+        width: 33.33333333333333%;
+    }
+
+    .no-gutter.row > .col-md-3 {
+        width: 24.999999999999996%;
+        *width: 24.930555555555554%;
+    }
+
+    .no-gutter.row > .col-md-2 {
+        width: 16.666666666666664%;
+        *width: 16.59722222222222%;
+    }
+
+    .no-gutter.row > .col-md-1 {
+        width: 8.333333333333332%;
+        *width: 8.263888888888888%;
+    }
+}
+
+/* end custom theme */
+
+.pTop10 {
+    padding-top: 10px;
+}
+
+.pTop20 {
+    padding-top: 20px;
+}
+
+.pBottom10 {
+    padding-bottom: 10px;
+}
+
+.pBottom20 {
+    padding-bottom: 20px;
+}
+
+.mTop10 {
+    margin-top: 10px;
+}
+
+.mTop15 {
+    margin-top: 15px;
+}
+
+.mTop20 {
+    margin-top: 20px;
+}
+
+.mBottom10 {
+    margin-bottom: 10px;
+}
+
+.right-col-heading {
+    background-color: #555;
+    color: #eee;
+}
+
+.left-col-heading {
+    background-color: #eeb467;
+    color: #eee;
+    background-color: #19314C;
+}
+
+.middle-col-heading {
+    background-color: #373737;
+    color: #eee;
+    background-color: #26545A;
+}
+
+/* Breadcrumbs from http://bootsnipp.com/snippets/featured/triangle-breadcrumbs-arrows */
+.btn-breadcrumb .btn:not(:last-child):after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 10px solid white;
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    left: 100%;
+    z-index: 3;
+}
+
+.btn-breadcrumb .btn:not(:last-child):before {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 10px solid rgb(173, 173, 173);
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    margin-left: 1px;
+    left: 100%;
+    z-index: 3;
+}
+
+.btn-breadcrumb .btn {
+    padding: 6px 12px 6px 24px;
+}
+
+.btn-breadcrumb .btn:first-child {
+    padding: 6px 6px 6px 10px;
+}
+
+.btn-breadcrumb .btn:last-child {
+    padding: 6px 18px 6px 24px;
+}
+
+/** Default button **/
+.btn-breadcrumb .btn.btn-default:not(:last-child):after {
+    border-left: 10px solid #fff;
+}
+
+.btn-breadcrumb .btn.btn-default:not(:last-child):before {
+    border-left: 10px solid #ccc;
+}
+
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):after {
+    border-left: 10px solid #ebebeb;
+}
+
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):before {
+    border-left: 10px solid #adadad;
+}
+
+/* The responsive part */
+
+.btn-breadcrumb > * > div {
+    /* With less: .text-overflow(); */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-breadcrumb > *:nth-child(n+2) {
+    display: none;
+}
+
+/* === For phones =================================== */
+@media (max-width: 767px) {
+    .btn-breadcrumb > *:nth-last-child(-n+2) {
+        display: block;
+    }
+
+    .btn-breadcrumb > * div {
+        max-width: 60px;
+    }
+}
+
+/* === For tablets ================================== */
+@media (min-width: 768px) and (max-width: 991px) {
+    .btn-breadcrumb > *:nth-last-child(-n+4) {
+        display: block;
+    }
+
+    .btn-breadcrumb > * div {
+        max-width: 100px;
+    }
+}
+
+/* === For desktops ================================== */
+@media (min-width: 992px) {
+    .btn-breadcrumb > *:nth-last-child(-n+6) {
+        display: block;
+    }
+
+    .btn-breadcrumb > * div {
+        max-width: 170px;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+ul.album-list .title {
+    font-weight: bold;
+}
+
+ul.album-list li {
+    list-style: none;
+    margin: 0 -25px;
+}
+
+ul.album-list li .album-list-icon {
+    padding-left: 10px;
+}
+
+.img-25x25 {
+    height: 25px;
+    width: 25px;
+}
+
+.img-tiny {
+    height: 50px;
+    width: 50px;
+}
+
+.icon-font {
+    font-size: 50px;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.active-cat {
+    font-weight: bold;
+    background: #efefef;
+}
+
+.logo {
+    max-width: 100%;
+    max-height: 180px;
+}
+
+.banner {
+    max-width: 100%;
+    max-height: 180px;
+}
+
+.ad {
+    height: 100px;
+    width: auto;
+    float: left;
+    padding-left: 20px;
+    padding-top: 20px;
+    max-width: 180px;
+}
+
+.img-album-thumb {
+    max-height: 150px;
+}
+
+.blog-title {
+    background-color: #246679;
+    color: #fff;
+}
+
+.ad-banner {
+    padding:0;
+    margin:0;
+    background-image: url('/img/hojairat-header.jpg');
+    max-height:300px;
+}

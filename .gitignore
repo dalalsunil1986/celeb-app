@@ -14,3 +14,4 @@ public/uploads/thumbnail/*
 public/uploads/medium/*
 public/uploads/large/*
 public/tracks/*
+public/bower_components/*
