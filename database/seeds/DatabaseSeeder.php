@@ -8,10 +8,10 @@ class DatabaseSeeder extends Seeder
 
     private $tables = [
         'users',
-//        'password_resets',
-//        'celebrities',
-//        'votes',
-//        'photos'
+        'password_resets',
+        'celebrities',
+        'votes',
+        'photos'
     ];
 
     /**
