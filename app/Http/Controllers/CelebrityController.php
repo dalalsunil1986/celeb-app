@@ -37,17 +37,26 @@ class CelebrityController extends Controller
         // Get a Random Celeb from DB
         $celebrityA = $this->celebrityRepository->model->with('thumbnail')->has('thumbnail')->orderBy(DB::raw('RAND()'))->first();
 
-        // Get another Random Celeb from DB
-        $celebrityB = $this->celebrityRepository->model->with('thumbnail')->has('thumbnail')->whereNotIn('id',
-            [$celebrityA->id])->orderBy(DB::raw('RAND()'))->first();
+        if ($celebrityA) {
+            // Get another Random Celeb from DB
 
-        // Preprare JSON Response
-
-
-        $data = response()->json([$celebrityA,$celebrityB]);
+            $celebrityB = $this->celebrityRepository->model->with('thumbnail')->has('thumbnail')->whereNotIn('id',
+                [$celebrityA->id])->orderBy(DB::raw('RAND()'))->first();
 
 
-        return $data;
+            if ($celebrityB) {
+                $data = response()->json([$celebrityA, $celebrityB]);
+
+                return $data;
+
+            }
+            // Preprare JSON Response
+            return null;
+
+        }
+
+        return null;
+
 
 // Example Response
 //  [
