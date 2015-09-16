@@ -45,9 +45,26 @@ class Celebrity extends BaseModel
 
         return $this->selectRaw('celebrities.*, count(*) as `vote_count`')
             ->join('votes', 'celebrities.id', '=', 'votes.celebrity_id')
-            ->whereBetween('votes.created_at', [$lastFriday, $beforeLastFriday->addWeeks(1)])
+//            ->whereBetween('votes.created_at', [$lastFriday, $beforeLastFriday->addWeeks(1)])
             ->groupBy('celebrity_id')
             ->orderBy('vote_count', 'desc')
             ->paginate($paginate);
     }
+//    public function getRankings($paginate = 10)
+//    {
+//
+//        // @todo: Debug the Query and Enhance it
+//        $lastFriday = new Carbon('last friday');
+//
+//        $beforeLastFriday = new Carbon($lastFriday->subWeek());
+//
+//        $lastFriday = $lastFriday->copy();
+//
+//        return $this->selectRaw('celebrities.*, count(*) as `vote_count`')
+//            ->join('votes', 'celebrities.id', '=', 'votes.celebrity_id')
+//            ->whereBetween('votes.created_at', [$lastFriday, $beforeLastFriday->addWeeks(1)])
+//            ->groupBy('celebrity_id')
+//            ->orderBy('vote_count', 'desc')
+//            ->paginate($paginate);
+//    }
 }

@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
             Model::unguard();
             $this->cleanDatabase();
             factory('App\Src\User\User', 1)->create();
-//            factory('App\Src\Celebrity\Celebrity', 100)->create();
-//            factory('App\Src\Vote\Vote', 1000)->create();
-//            factory('App\Src\Photo\Photo', 300)->create();
+            factory('App\Src\Celebrity\Celebrity', 100)->create();
+            factory('App\Src\Vote\Vote', 1000)->create();
+            factory('App\Src\Photo\Photo', 3000)->create();
     }
 
     private function cleanDatabase()

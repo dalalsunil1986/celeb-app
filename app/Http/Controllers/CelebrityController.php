@@ -56,46 +56,6 @@ class CelebrityController extends Controller
         }
 
         return null;
-
-
-// Example Response
-//  [
-//    {
-//        "celebrityA": {
-//        "id": 100,
-//            "name": "Dessie Robel",
-//            "url": "asdad.jpg",
-//            "created_at": "2015-06-13 12:11:46",
-//            "updated_at": "2015-06-13 12:11:46",
-//            "thumbnail": {
-//            "id": 95,
-//                "name": "saepe.jpg",
-//                "imageable_id": 100,
-//                "imageable_type": "App\\Src\\Celebrity\\Celebrity",
-//                "thumbnail": 1,
-//                "created_at": "2015-06-13 12:11:52",
-//                "updated_at": "2015-06-13 12:11:52"
-//            }
-//        },
-//        "celebrityB": {
-//        "id": 30,
-//            "name": "Dr. Roberto Nikolaus",
-//            "url": "asdad.jpg",
-//            "created_at": "2015-06-13 12:11:46",
-//            "updated_at": "2015-06-13 12:11:46",
-//            "thumbnail": {
-//            "id": 3,
-//                "name": "sint.jpg",
-//                "imageable_id": 30,
-//                "imageable_type": "App\\Src\\Celebrity\\Celebrity",
-//                "thumbnail": 1,
-//                "created_at": "2015-06-13 12:11:52",
-//                "updated_at": "2015-06-13 12:11:52"
-//            }
-//        }
-//    }
-//  ]
-
     }
 
     /**
@@ -104,7 +64,7 @@ class CelebrityController extends Controller
      */
     public function getRankings()
     {
-        $rankings = $this->celebrityRepository->model->getRankings(10);
+        $rankings = $this->celebrityRepository->model->getRankings(40);
 
         $rankings->load('thumbnail');
 
