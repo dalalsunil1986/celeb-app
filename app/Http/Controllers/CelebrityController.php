@@ -32,31 +32,46 @@ class CelebrityController extends Controller
      * Get Celeb For Main Screen
      * @return \Illuminate\Http\JsonResponse
      */
+
     public function index()
     {
         // Get a Random Celeb from DB
-        $celebrityA = $this->celebrityRepository->model->with('thumbnail')->has('thumbnail')->orderBy(DB::raw('RAND()'))->first();
+        $celebrities = $this->celebrityRepository->model->with(['thumbnail'=>function($q){
+            $q->addSelect(['id','name','imageable_id']);
+        }])->has('thumbnail')->orderBy(DB::raw('RAND()'))->limit(10)->get(['id','name']);
 
-        if ($celebrityA) {
-            // Get another Random Celeb from DB
-
-            $celebrityB = $this->celebrityRepository->model->with('thumbnail')->has('thumbnail')->whereNotIn('id',
-                [$celebrityA->id])->orderBy(DB::raw('RAND()'))->first();
-
-
-            if ($celebrityB) {
-                $data = response()->json([$celebrityA, $celebrityB]);
-
-                return $data;
-
-            }
-            // Preprare JSON Response
-            return null;
-
+        if ($celebrities) {
+            return response()->json($celebrities->toArray());
         }
 
         return null;
     }
+
+//    public function index()
+//    {
+//        // Get a Random Celeb from DB
+//        $celebrityA = $this->celebrityRepository->model->with('thumbnail')->has('thumbnail')->orderBy(DB::raw('RAND()'))->first();
+//
+//        if ($celebrityA) {
+//            // Get another Random Celeb from DB
+//
+//            $celebrityB = $this->celebrityRepository->model->with('thumbnail')->has('thumbnail')->whereNotIn('id',
+//                [$celebrityA->id])->orderBy(DB::raw('RAND()'))->first();
+//
+//
+//            if ($celebrityB) {
+//                $data = response()->json([$celebrityA, $celebrityB]);
+//
+//                return $data;
+//
+//            }
+//            // Preprare JSON Response
+//            return null;
+//
+//        }
+//
+//        return null;
+//    }
 
     /**
      * Get Rankings
