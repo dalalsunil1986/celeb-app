@@ -79,7 +79,7 @@ class CelebrityController extends Controller
      */
     public function getRankings()
     {
-        $rankings = $this->celebrityRepository->model->getRankings(40);
+        $rankings = $this->celebrityRepository->model->getRankings(10);
 
         $rankings->load('thumbnail');
 
